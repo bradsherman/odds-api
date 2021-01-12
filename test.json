@@ -1,0 +1,86 @@
+{
+  "success": true,
+  "data": [
+    {
+      "sport_key": "basketball_ncaab",
+      "sport_nice": "NCAAB",
+      "teams": [
+        "Marist Red Foxes",
+        "Monmouth Hawks"
+      ],
+      "commence_time": 1610305200,
+      "home_team": "Monmouth Hawks",
+      "sites": [
+        {
+          "site_key": "bovada",
+          "site_nice": "Bovada",
+          "last_update": 1610309312,
+          "odds": {
+            "spreads": {
+              "odds": [
+                1.87,
+                1.95
+              ],
+              "points": [
+                "-0.5",
+                "0.5"
+              ]
+            }
+          }
+        },
+        {
+          "site_key": "unibet",
+          "site_nice": "Unibet",
+          "last_update": 1610309371,
+          "odds": {
+            "spreads": {
+              "odds": [
+                1.89,
+                1.91
+              ],
+              "points": [
+                "16.0",
+                "-16.0"
+              ]
+            }
+          }
+        },
+        {
+          "site_key": "betrivers",
+          "site_nice": "BetRivers",
+          "last_update": 1610309377,
+          "odds": {
+            "spreads": {
+              "odds": [
+                1.88,
+                1.91
+              ],
+              "points": [
+                "16.0",
+                "-16.0"
+              ]
+            }
+          }
+        },
+        {
+          "site_key": "mybookieag",
+          "site_nice": "MyBookie.ag",
+          "last_update": 1610309379,
+          "odds": {
+            "spreads": {
+              "odds": [
+                1.75,
+                1.85
+              ],
+              "points": [
+                "10.5",
+                "-10.5"
+              ]
+            }
+          }
+        }
+      ],
+      "sites_count": 4
+    }
+  ]
+}
