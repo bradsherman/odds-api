@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
-module Config (Config(..)) where
+module Config (Config(..), defConfig) where
 
 import Data.Text ( Text )
 import GHC.Generics ( Generic )

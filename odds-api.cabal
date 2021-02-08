@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f0eef22ff197840eced502b2c48f5e582b05c3736ccd867237c089a8cc82cf5d
+-- hash: 68a46934965c4be9bbf7227ecd89e7c33bc95343799c14b2f5e8debd85b791c6
 
 name:           odds-api
 version:        0.1.0.0
@@ -29,6 +29,7 @@ library
   exposed-modules:
       Client
       Config
+      Data.Market
       Data.Odds
       Data.Response
       Data.Site
