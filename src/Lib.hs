@@ -1,22 +1,23 @@
 module Lib
     ( getSports,
       getUpcoming,
-      someFunc,
       Config(..),
+      defConfig,
+      Market(..),
       Sport,
       SportingEvent,
-      H2H(..),
-      Spreads(..),
+      ApiResponse(..),
+      H2HResponse(..),
+      SpreadsResponse(..),
       sportKey,
       sportName
     ) where
 
 import Client (getSports, getUpcoming)
-import Config (Config(..))
+import Config (Config(..), defConfig)
+import Data.Market (Market(..))
+import Data.Response (ApiResponse(..))
 import Data.Sport (Sport, sportKey)
 import Data.SportingEvent (SportingEvent, sportName)
 import Data.Text (Text)
-import Data.Odds (H2H(..), Spreads(..))
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import Data.Odds (H2HResponse(..), SpreadsResponse(..))

@@ -1,23 +1,26 @@
 module Data.SportingEvent where
 
-import Data.Sport (Sport(..), SportKey)
-import Data.Site (Site(..), Timestamp)
-
 import Data.Aeson (FromJSON, parseJSON, (.:))
-import Data.Text (Text, pack)
 import Data.Aeson.Types (withObject)
+import Data.Site (Site (..))
+import Data.Text (Text, pack)
+
+type SportKey = Text
 
 type TeamName = Text
 
-data SportingEvent o = SportingEvent
+type Timestamp = Integer
+
+data SportingEvent odds = SportingEvent
   { sportKey :: SportKey,
     sportName :: Text,
     teams :: [TeamName],
     commenceTime :: Timestamp,
     homeTeam :: TeamName,
-    sites :: [Site o],
+    sites :: [Site odds],
     sitesCount :: Integer
-  } deriving (Show, Eq)
+  }
+  deriving (Show, Eq)
 
 instance (FromJSON o) => FromJSON (SportingEvent o) where
   parseJSON = withObject "SportingEvent" $ \v ->
