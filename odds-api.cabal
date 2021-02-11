@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 68a46934965c4be9bbf7227ecd89e7c33bc95343799c14b2f5e8debd85b791c6
+-- hash: 06a00c1d9764155ca8c33d6e1dcfa0c57a08b2b66f6e81a460958f4eefd7fc7a
 
 name:           odds-api
 version:        0.1.0.0
@@ -27,9 +27,8 @@ source-repository head
 
 library
   exposed-modules:
-      Client
+      API.API
       Config
-      Data.Market
       Data.Odds
       Data.Response
       Data.Site
@@ -45,9 +44,14 @@ library
     , base >=4.7 && <5
     , bytestring
     , envy
+    , http-client
+    , http-client-tls
     , http-conduit
     , load-env
+    , servant
+    , servant-client
     , text
+    , transformers
     , vector
   default-language: Haskell2010
 
@@ -63,10 +67,15 @@ executable odds-api-exe
     , base >=4.7 && <5
     , bytestring
     , envy
+    , http-client
+    , http-client-tls
     , http-conduit
     , load-env
     , odds-api
+    , servant
+    , servant-client
     , text
+    , transformers
     , vector
   default-language: Haskell2010
 
@@ -83,9 +92,14 @@ test-suite odds-api-test
     , base >=4.7 && <5
     , bytestring
     , envy
+    , http-client
+    , http-client-tls
     , http-conduit
     , load-env
     , odds-api
+    , servant
+    , servant-client
     , text
+    , transformers
     , vector
   default-language: Haskell2010

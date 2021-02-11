@@ -1,14 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Data.Sport (Sport(..), SportKey, SportTitle) where
+module Data.Sport (Sport (..), SportKey, SportTitle) where
 
 import Data.Aeson (FromJSON, parseJSON, (.:))
 import Data.Aeson.Types (withObject)
 import Data.Text (Text, pack)
 
 type SportKey = Text
--- sportKeys :: [Text]
--- sportKeys = map pack ["americanfootball_ncaaf"]
 
 type SportTitle = Text
 

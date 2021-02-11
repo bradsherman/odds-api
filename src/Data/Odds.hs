@@ -19,13 +19,6 @@ data SpreadOdds = SpreadOdds
 
 instance FromJSON SpreadOdds
 
-newtype SpreadsResponse = SpreadsResponse
-  { spreads :: SpreadOdds
-  }
-  deriving (Show, Eq, Generic)
-
-instance FromJSON SpreadsResponse
-
 data MoneylineOdds = MoneylineOdds
   { team1Odds :: OddsValue,
     team2Odds :: OddsValue,
@@ -46,6 +39,25 @@ instance FromJSON MoneylineOdds where
       extractDrawOdds l = case length l of
         3 -> Just (head $ tail $ tail l)
         _ -> Nothing
+
+-- Have to figure out how to parse this
+-- data OddsResponse
+--   = SpreadsResponse
+--       { spreads :: SpreadOdds
+--       }
+--   | H2HResponse
+--       { h2h :: MoneylineOdds,
+--         h2hLay :: Maybe MoneylineOdds
+--       }
+--   deriving (Show, Eq, Generic)
+-- instance FromJSON OddsResponse
+
+newtype SpreadsResponse = SpreadsResponse
+  { spreads :: SpreadOdds
+  }
+  deriving (Show, Eq, Generic)
+
+instance FromJSON SpreadsResponse
 
 data H2HResponse = H2HResponse
   { h2h :: MoneylineOdds,
