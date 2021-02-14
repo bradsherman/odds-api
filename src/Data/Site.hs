@@ -2,6 +2,7 @@ module Data.Site where
 
 import Data.Aeson (FromJSON, parseJSON, (.:))
 import Data.Aeson.Types (withObject)
+import Data.Odds (OddsResponse)
 import Data.Text (Text, pack)
 
 type SiteKey = Text
@@ -9,15 +10,15 @@ type SiteKey = Text
 -- TODO move this somewhere else?
 type Timestamp = Integer
 
-data Site o = Site
+data Site = Site
   { siteKey :: SiteKey,
     siteName :: Text,
     lastUpdate :: Timestamp,
-    odds :: o
+    odds :: OddsResponse
   }
   deriving (Show, Eq)
 
-instance (FromJSON o) => FromJSON (Site o) where
+instance FromJSON Site where
   parseJSON = withObject "Site" $ \v ->
     Site
       <$> v .: pack "site_key"

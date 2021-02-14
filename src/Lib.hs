@@ -1,25 +1,23 @@
 module Lib
-  ( getMoneylines,
-    getSports,
-    getSpreads,
+  ( getSports,
+    getOdds,
     Config (..),
     defConfig,
     Market (..),
-    Sport,
+    Sport (sportKey),
     SportingEvent,
     ApiResponse (..),
-    H2HResponse (..),
-    SpreadsResponse (..),
+    OddsResponse,
     SportKey (..),
     Region (..),
     sportName,
   )
 where
 
-import API.API (Market (..), Region (..), SportKey (..), getMoneylines, getSports, getSpreads)
+import API.API (Market (..), Region (..), SportKey (..), getOdds, getSports)
 import Config (Config (..), defConfig)
-import Data.Odds (H2HResponse (..), SpreadsResponse (..))
+import Data.Odds (OddsResponse)
 import Data.Response (ApiResponse (..))
-import Data.Sport (Sport)
+import Data.Sport (Sport (sportKey))
 import Data.SportingEvent (SportingEvent, sportName)
 import Data.Text (Text)

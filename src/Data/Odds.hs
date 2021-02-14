@@ -1,9 +1,14 @@
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE PartialTypeSignatures #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Data.Odds where
 
-import Data.Aeson (FromJSON, parseJSON, (.:), (.:?))
-import Data.Aeson.Types (withArray, withObject)
+import Data.Aeson (FromJSON, Value (Object), parseJSON, (.:), (.:?))
+import Data.Aeson.Types (parseMaybe, withArray, withObject)
+import Data.Foldable (asum)
+import Data.Maybe (catMaybes, fromMaybe)
 import Data.Text (pack)
 import GHC.Generics (Generic)
 
@@ -41,32 +46,19 @@ instance FromJSON MoneylineOdds where
         _ -> Nothing
 
 -- Have to figure out how to parse this
--- data OddsResponse
---   = SpreadsResponse
---       { spreads :: SpreadOdds
---       }
---   | H2HResponse
---       { h2h :: MoneylineOdds,
---         h2hLay :: Maybe MoneylineOdds
---       }
---   deriving (Show, Eq, Generic)
--- instance FromJSON OddsResponse
-
-newtype SpreadsResponse = SpreadsResponse
-  { spreads :: SpreadOdds
-  }
-  deriving (Show, Eq, Generic)
-
-instance FromJSON SpreadsResponse
-
-data H2HResponse = H2HResponse
-  { h2h :: MoneylineOdds,
-    h2hLay :: Maybe MoneylineOdds
-  }
+data OddsResponse
+  = SpreadsResponse
+      { spreads :: SpreadOdds
+      }
+  | H2HResponse
+      { h2h :: MoneylineOdds,
+        h2hLay :: Maybe MoneylineOdds
+      }
   deriving (Show, Eq)
 
-instance FromJSON H2HResponse where
-  parseJSON = withObject "H2HResponse" $ \v ->
-    H2HResponse
-      <$> v .: pack "h2h"
-      <*> v .:? pack "h2h_lay"
+instance FromJSON OddsResponse where
+  parseJSON = withObject "SpreadsResponse or H2HResponse" $ \o ->
+    asum
+      [ SpreadsResponse <$> o .: pack "spreads",
+        H2HResponse <$> o .: pack "h2h" <*> o .:? pack "h2h_lay"
+      ]

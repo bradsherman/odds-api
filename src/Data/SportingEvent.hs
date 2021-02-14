@@ -11,18 +11,18 @@ type TeamName = Text
 
 type Timestamp = Integer
 
-data SportingEvent odds = SportingEvent
+data SportingEvent = SportingEvent
   { sportKey :: SportKey,
     sportName :: Text,
     teams :: [TeamName],
     commenceTime :: Timestamp,
     homeTeam :: TeamName,
-    sites :: [Site odds],
+    sites :: [Site],
     sitesCount :: Integer
   }
   deriving (Show, Eq)
 
-instance (FromJSON o) => FromJSON (SportingEvent o) where
+instance FromJSON SportingEvent where
   parseJSON = withObject "SportingEvent" $ \v ->
     SportingEvent
       <$> v .: pack "sport_key"
